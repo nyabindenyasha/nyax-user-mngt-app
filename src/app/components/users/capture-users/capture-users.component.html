@@ -28,7 +28,7 @@
   <div class="validation">
     <span *ngIf="validation.isValid(user)" class="error">{{validation.getError()}}</span>
     <button mdbBtn color="unique" class="my-2 col-4" (click)="onSubmit()"
-      [disabled]="validation.isValid(user) ||message">Submit
+      [disabled]="validation.isValid(user)">Submit
     </button>
   </div>
 </div>

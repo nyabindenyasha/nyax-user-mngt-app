@@ -6,7 +6,7 @@
     <button type="button"  *ngIf="add"  class="btn btn-primary" (click)="onAdd()"><i class="fas fa-plus pr-2" aria-hidden="true"></i>Add</button>
 
     <!-- <button mdbBtn rounded="true" *ngIf="add" class="blue darken-4 waves-light float-left" mdbWavesEffect (click)="onAdd()"> <strong>Add</strong> </button> -->
-    <input *ngIf="search" [(ngModel)]="searchText" type="search" placeholder="search" (keyup)="filterItems($event.target.value)" class="form-control float-right p-2 m-2 col-6">
+    <!-- <input *ngIf="search" [(ngModel)]="searchText" type="search" placeholder="search" (keyup)="filterItems($event.target.value)" class="form-control float-right p-2 m-2 col-6"> -->
   </div>
 </div>
 <div class="table-custom padding" *ngIf="data">
