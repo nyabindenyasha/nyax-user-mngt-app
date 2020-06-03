@@ -1,0 +1,17 @@
+<p></p>
+<div class="row ">
+    <app-table-view *ngIf="logedInUser.isAdmin" [data]="tableData" [add]="'true'" [title]="'Nyax\'s Users Details'"
+        (itemClick)="itemClick($event)" (addClick)="addClick()" class="col-6" [entries]="15"></app-table-view>
+
+    <app-table-view *ngIf="!logedInUser.isAdmin" [data]="tableData" [add]="false" [title]="'Nyax\'s Users Details'"
+    (itemClick)="itemClick($event)" class="col-6" [entries]="5"></app-table-view>
+
+    <app-form-view [buttons]="true" [form]="selected" [title]="'User'" class="col-6" *ngIf="!isAdd && selected && logedInUser.isAdmin"
+        [headers]="tableData.headers" (edit)="editClick($event)" (delete)="deleteClick($event)"></app-form-view>
+        
+    <app-form-view [form]="selected" [title]="'User'" class="col-6" *ngIf="!isAdd && selected && !logedInUser.isAdmin"
+        [headers]="tableData.headers"></app-form-view>
+
+    <app-capture-users *ngIf="isAdd && selected" class="col 6" [user]="selected" (data)=" reloadUsers($event)">
+    </app-capture-users>
+</div>

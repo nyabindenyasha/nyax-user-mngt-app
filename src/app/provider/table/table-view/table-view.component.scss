@@ -1,0 +1,45 @@
+th {
+    background: #eaeaea;
+    box-shadow: 2px 1px #c3c3c3;
+    cursor: pointer;
+}
+
+tbody {
+    &>tr {
+        color: #0d47a0;
+        cursor: pointer;
+
+        &:hover {
+            background: #effeff;
+        }
+
+        &.active {
+            background: #b7e9ec;
+        }
+    }
+}
+
+.no-data {
+    text-align: center;
+    margin-top: -2em;
+
+    &>i {
+        font-size: 3em;
+    }
+}
+
+.table-custom {
+    background-color: #fefefe;
+    overflow: auto;
+}
+
+.search {
+    width: 50%;
+    margin: auto;
+
+}
+
+.padding {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}

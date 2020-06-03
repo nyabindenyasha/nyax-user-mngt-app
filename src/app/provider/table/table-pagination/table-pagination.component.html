@@ -1,0 +1,22 @@
+<div class="btn-group" role="group" *ngIf="exceedsMin()">
+  <!-- <button class="blue darken-4 btn fas fa-arrow-left" mdbWavesEffect (click)="onPrev()" [disabled]="isMin()"></button> -->
+
+  <button type="button"  (click)="onPrev()"  [disabled]="isMin()"  class="btn btn-primary"><i class="fas fa-chevron-left pr-2" aria-hidden="true"></i></button>
+
+  <button class="btn" mdbWavesEffect *ngFor="let item of getPageTracker(); let i = index;" (click)="onPage(item)" [ngClass]="{'orange darken-4': selected(item), 'white teal-text': !selected(item)}">
+    {{item + 1}}
+  </button>
+
+  <button type="button"  (click)="onNext()"  [disabled]="isMax()" class="btn btn-primary"><i class="fas fa-chevron-right pr-2" aria-hidden="true"></i></button>
+
+  <!-- <button class="blue darken-4 btn fas fa-chevron-right" mdbWavesEffect (click)="onNext()" [disabled]="isMax()"></button> -->
+</div>
+
+
+
+
+
+
+
+
+

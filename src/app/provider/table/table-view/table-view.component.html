@@ -1,0 +1,58 @@
+<h5 class="text-right" *ngIf="title">{{title}}</h5>
+<div class="row padding"> 
+  <div class="col">
+    <button mdbBtn rounded="true" *ngIf="back" class="blue darken-4 waves-light float-left fa fa-angle-double-left"   mdbWavesEffect (click)="onBack()"></button>
+
+    <button type="button"  *ngIf="add"  class="btn btn-primary" (click)="onAdd()"><i class="fas fa-plus pr-2" aria-hidden="true"></i>Add</button>
+
+    <!-- <button mdbBtn rounded="true" *ngIf="add" class="blue darken-4 waves-light float-left" mdbWavesEffect (click)="onAdd()"> <strong>Add</strong> </button> -->
+    <input *ngIf="search" [(ngModel)]="searchText" type="search" placeholder="search" (keyup)="filterItems($event.target.value)" class="form-control float-right p-2 m-2 col-6">
+  </div>
+</div>
+<div class="table-custom padding" *ngIf="data">
+  <table mdbTable>
+    <thead>
+      <tr>
+        <th *ngFor="let head of data.headers" (click)="sortByHeader(head)" scope="col">
+          <i [ngClass]="{'fa fa-angle-double-down': selectedHead == head}"></i>
+          &nbsp; {{head.Display}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let c of elements" [ngClass]="{'active': isSelected(c)}">
+        <td *ngFor="let head of data.headers" (click)="onclick(c)">
+          <span *ngIf="head.DataType == 0">{{c[head.Name]}}</span>
+          <span *ngIf="head.DataType == 1">{{c[head.Name] | date : 'dd-MMM-yyyy'}}</span>
+          <span *ngIf="head.DataType == 2" title="{{c[head.Name][head.SubName]}}">{{c[head.Name][head.SubName]}}</span>
+          <span style="font-size:1.5em;" *ngIf="head.DataType == 3">
+            <i class="fa" [ngClass]="{'green-text fa-check': c[head.Name], 'red-text fa-times': !c[head.Name]}"></i>
+          </span>
+          <span *ngIf="head.DataType == 4">
+            <i class="fa" [ngClass]="{'green-text fa-check': c[head.Name], 'red-text fa-times': !c[head.Name]}">
+              {{&nbsp;c[head.SubName]}}
+            </i>
+          </span>
+          <img *ngIf="head.DataType == 5" src="{{c[head.Name]}}" width="40" />
+          <span *ngIf="head.DataType == 6">{{c[head.Name] | currency : 'USD':true:'1.2-2'}}</span>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="data.body &&!items">
+      <tr>
+        <td colspan="4">
+          <app-table-pagination [data]="data.body" [entries]="entries" (elements)="loadElements($event)"></app-table-pagination>
+        </td>
+      </tr>
+    </tfoot>
+    <tfoot *ngIf="items">
+      <tr>
+        <td colspan="4">
+          <app-table-pagination [data]="items" [entries]="entries" (elements)="loadElements($event)"></app-table-pagination>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <p class="no-data" *ngIf="!data.body || data.body.length < 1">
+    <i class="fa fa-ban"></i>
+    <br /> no data</p>
+</div>

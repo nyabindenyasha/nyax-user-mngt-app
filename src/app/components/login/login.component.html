@@ -1,0 +1,37 @@
+<br>
+
+<div class="container text-center">
+  <h1>
+    <img width="100" alt="Angular Logo" src="/assets/images/angular.png"> {{ title }}
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-3"></div>
+
+  <div class="col-6">
+    <p></p>
+    <div class="border border-light p-5">
+      <h3 class="card-title text-center"> Login </h3>
+
+      <div class="row">
+
+        <label>Firstname</label>
+        <input type="text" class="form-control mb-4" [(ngModel)]="user.name" placeholder="Enter Firstname">
+
+        <label>Password</label>
+        <input type="text" class="form-control mb-4" [(ngModel)]="user.password" placeholder="Enter Password">
+
+      </div>
+
+      <div class="validation">
+        <span *ngIf="validation.isValid(user)" class="error">{{validation.getError()}}</span>
+        <button mdbBtn color="unique" class="my-2 col-4" (click)="onSubmit()"
+          [disabled]="validation.isValid(user) || message">Submit
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2"></div>
+</div>

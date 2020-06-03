@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body{
+    overflow-x: hidden;
+}
+
+label{
+    font-size: .8em;
+    font-weight: 500;
+}
+
+.validation {
+    cursor: pointer;
+    text-align: center;
+    & > .error{
+        display: block;
+        opacity: 0;
+        text-align: center;
+        width: 100%;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #e65100;
+        font-size: .8em;
+    }
+}
+
+.validation:hover{
+    & > .error  {
+        opacity: 1;
+    }
+}
+
+.nav-link{
+    padding-right: 1em !important;
+    padding-left: 1em !important;
+    margin-right: 1em;
+    border: solid 2px #0d47a0;
+    border-radius: 2em;
+    &.active{
+        background: #0000006b;
+        padding-right: 1.3em !important;
+        padding-left: 1.3em !important;
+    }
+}
+
+#httpRequest{
+    display: none;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+
+    & > .spinner{
+        position: absolute;
+        top: 40%;
+        right: 45%;
+        color: aliceblue;
+        font-size: 5em;
+        animation-name: spin;
+        animation-duration: 1000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
