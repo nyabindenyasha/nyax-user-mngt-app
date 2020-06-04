@@ -30,9 +30,9 @@ export class CaptureUsersComponent implements OnInit {
     this.validation.addField({ name: 'name', display: ' Firstname', type: ValidationType.Required });
     this.validation.addField({ name: 'surname', display: ' Surname', type: ValidationType.Required });
     this.validation.addField({ name: 'email', display: ' Email', type: ValidationType.Required });
-//    this.validation.addField({ name: 'email', display: ' Email', type: ValidationType.Pattern},'','', RegexPattern.getEmailRegex());
+    this.validation.addField({ name: 'email', display: ' Email', type: ValidationType.Pattern }, '', '', RegexPattern.getEmailRegex());
     this.validation.addField({ name: 'password', display: ' Password', type: ValidationType.Required });
- //   this.validation.addField({ name: 'password', display: ' Password', type: ValidationType.PasswordPattern},'','', RegexPattern.getPasswordRegex());
+    this.validation.addField({ name: 'password', display: ' Password', type: ValidationType.PasswordPattern }, '', '', RegexPattern.getPasswordRegex());
     this.validation.addField({ name: 'role', display: ' Role', type: ValidationType.Required });
   }
 
@@ -44,7 +44,7 @@ export class CaptureUsersComponent implements OnInit {
       return;
     } else {
       this.userService.create(this.user);
-     swal.fire('Success', 'User created successfully', 'success');
+      swal.fire('Success', 'User created successfully', 'success');
       this.data.emit(this.user);
     }
   }
